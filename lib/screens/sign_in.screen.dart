@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -27,9 +28,44 @@ class _SignInScreenState extends State<SignInScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children:[
               //todo 5 Pengguna 
+              TextFormField(
+                 controller: _userNameController,
+                decoration: InputDecoration(
+                  labelText: 'Nama Pengguna',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 20,),
               //todo 6 Sandi
+              TextFormField(
+                controller: _passwordController,
+                decoration: InputDecoration(
+                  labelText: "Kata Sandi",
+                  border: OutlineInputBorder(),
+                  errorText: _errorText.isNotEmpty ? _errorText : null,
+                  suffixIcon: IconButton(onPressed: () {
+                    setState(() {
+                      _obscurePassword= !_obscurePassword;
+                    });
+                  }, icon: Icon(_obscurePassword ? Icons.visibility_off : Icons.visibility))
+                ),
+                obscureText: _obscurePassword,
+              ),
               //todo 7 Sign in
+              const SizedBox(height : 20,),
+              ElevatedButton(onPressed: () {
+                
+              }, child: const Text('Sign In')),
               //todo 8 Sign up
+              RichText(text: TextSpan(
+                text: "Belum Punya Akun",
+                style: TextStyle(
+                  color: Colors.blue,
+                  decoration: TextDecoration.underline,
+                  fontSize: 16
+                ),
+                recognizer: TapGestureRecognizer()..onTap=() {},
+              )),
             ]
           ),
         ),
