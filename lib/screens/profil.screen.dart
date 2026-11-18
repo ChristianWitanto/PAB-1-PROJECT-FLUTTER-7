@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_wisata_candi_34/providers/favorite_provider.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -27,6 +29,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final favoriteCount =
+    context.watch<FavoriteProvider>().count;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -108,7 +113,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Text("Favorite", style: TextStyle(fontSize: 18 , fontWeight: FontWeight.bold),)
                     ],)
                   ),
-                  Expanded(child: Text(' : $favoriteCandiCount', style: TextStyle(fontSize: 18),))
+                  Expanded(child: Text(' : $favoriteCount', style: TextStyle(fontSize: 18),))
                 ],
               ),
               SizedBox(height: 4,),
