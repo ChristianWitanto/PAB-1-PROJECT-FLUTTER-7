@@ -63,7 +63,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(Candi.name,style: TextStyle(fontSize: 16),),
+                          Text(Candi.name,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
                           SizedBox(height: 4,),
                           Text(Candi.location),
 
