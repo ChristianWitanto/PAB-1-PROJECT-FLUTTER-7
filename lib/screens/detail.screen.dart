@@ -9,19 +9,23 @@ class DetailScreen extends StatelessWidget {
 
   const DetailScreen({super.key, required this.candi});
 
+
   @override
   Widget build(BuildContext context) {
-    final isFav = context.watch<FavoriteProvider>().isFavorite(candi.name);
+    final isFav = context
+    .watch<FavoriteProvider>()
+    .isFavorite(candi.name);
+
 
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            //detailHeader
+            // TODO: DetailHeader
             Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Image.asset(
@@ -52,10 +56,11 @@ class DetailScreen extends StatelessWidget {
                 ),
               ],
             ),
-            //detailInfo
-            //detailInfo atas
+
+            // DetailInfo
+            // DetailInfo Atas
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 children: [
                   SizedBox(height: 16),
@@ -71,19 +76,19 @@ class DetailScreen extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () {
-                          context.read<FavoriteProvider>().toggle(candi.name);
+                              context.read<FavoriteProvider>().toggle(candi.name);
                         },
                         icon: Icon(
                           isFav ? Icons.favorite : Icons.favorite_border,
                           color: isFav ? Colors.red : null,
-                        ),
+                          ),
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-            //detailInfo Tengah
+            // DetailInfo Tengah
             SizedBox(height: 16),
             Row(
               children: [
@@ -96,7 +101,7 @@ class DetailScreen extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                Text(":${candi.location}"),
+                Text(": ${candi.location}"),
               ],
             ),
             Row(
@@ -110,7 +115,7 @@ class DetailScreen extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                Text(":${candi.built}"),
+                Text(": ${candi.built}"),
               ],
             ),
             Row(
@@ -124,23 +129,21 @@ class DetailScreen extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                Text(":${candi.type}"),
+                Text(": ${candi.type}"),
               ],
             ),
-            //detailInfo bawah
             const SizedBox(height: 16),
             Divider(color: Colors.deepPurple.shade100),
             const SizedBox(height: 16),
-
             const Text(
               'Deskripsi',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
             Text(candi.description),
-            //detailgallery
+            // DetailGallery
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -150,6 +153,7 @@ class DetailScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 10),
+                  //SixeBox dibawah ini untuk image gallery, gunakan ListView.builder agar bisa di scroll horizontal
                   SizedBox(
                     height: 100,
                     child: ListView.builder(
@@ -174,26 +178,28 @@ class DetailScreen extends StatelessWidget {
                       },
                     ),
                   ),
+                  const SizedBox(height: 4),
+                  const Text(
+                    'Tap untuk memperbesar',
+                    style: TextStyle(fontSize: 12, color: Colors.black54),
+                  ),
                 ],
               ),
-            ),
-            const SizedBox(height: 4),
-            const Text(
-              "Tap Untuk memperbesar",
-              style: TextStyle(fontSize: 12, color: Colors.black54),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const ProfileScreen()),
-          );
-        },
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (_) => const ProfileScreen()),
+            );
+          },
         child: const Icon(Icons.person),
       ),
+
     );
   }
 }

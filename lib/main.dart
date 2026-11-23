@@ -3,6 +3,7 @@ import 'package:flutter_wisata_candi_34/data/candi_data.dart';
 import 'package:flutter_wisata_candi_34/providers/favorite_provider.dart' show FavoriteProvider;
 import 'package:flutter_wisata_candi_34/screens/detail.screen.dart';
 import 'package:flutter_wisata_candi_34/screens/profil.screen.dart';
+import 'package:flutter_wisata_candi_34/screens/search_screen.dart';
 import 'package:flutter_wisata_candi_34/screens/sign_in.screen.dart';
 import 'package:provider/provider.dart';
 
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
         ).copyWith(primary: Colors.deepPurple, surface: Colors.deepPurple[50]),
         useMaterial3: true,
       ),
-      home: DetailScreen(candi: candiList[0]),
+      home: SearchScreen(),
     );
   }
 }
